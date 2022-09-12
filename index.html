@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Scoreboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://allfont.ru/allfont.css?fonts=a_lcdnova" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="wrapper">
+            <div class="scoreboard">
+                <div class="home-scoreboard">
+                    <p class="home-scoreboard-title">HOME</p>
+
+                    <div class="home-scoreboard-view">
+                        <p class="home-scoreboard-score">0</p>
+                    </div>
+
+                    <div class="home-scoreboard-addscore">
+                        <button class="button-addscore"  id="homeAdd1">+ 1</button>
+                        <button class="button-addscore"  id="homeAdd2">+ 2</button>
+                        <button class="button-addscore"  id="homeAdd3">+ 3</button>
+                    </div>
+                </div>
+
+                <div class="guest-scoreboard">
+                    <p class="guest-scoreboard-title">GUEST</p>
+
+                    <div class="guest-scoreboard-view">
+                        <p class="guest-scoreboard-score">0</p>
+                    </div>
+
+                    <div class="guest-scoreboard-addscore">
+                        <button class="button-addscore"  id="guestAdd1">+ 1</button>
+                        <button class="button-addscore"  id="guestAdd2">+ 2</button>
+                        <button class="button-addscore"  id="guestAdd3">+ 3</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="new-game" onclick="newGame()">New Game</button>
+    </div>
+
+    <script>
+        let homeScoreboardAddscore = document.querySelector('.home-scoreboard-addscore');
+        let guestScoreboardAddscore = document.querySelector('.guest-scoreboard-addscore');
+
+        let homeTeamScore = document.querySelector('.home-scoreboard-score');
+        let homeTeamScoreTemp = 0;
+
+        let guestTeamScore = document.querySelector('.guest-scoreboard-score');
+        let guestTeamScoreTemp = 0;
+
+        homeScoreboardAddscore.onclick = function(event) {
+               switch(event.target.id) {
+                    case 'homeAdd1': 
+                        homeTeamScoreTemp +=1;
+                        break;
+                         
+                    case 'homeAdd2':
+                        homeTeamScoreTemp +=2; 
+                        break;
+
+                    case 'homeAdd3':
+                        homeTeamScoreTemp +=3; 
+                        break;     
+               }
+            homeTeamScore.innerText = homeTeamScoreTemp; 
+        }
+
+        guestScoreboardAddscore.onclick = function(event) {
+            switch(event.target.id) {
+                    case 'guestAdd1': 
+                        guestTeamScoreTemp +=1;
+                        break;
+                         
+                    case 'guestAdd2':
+                        guestTeamScoreTemp +=2; 
+                        break;
+
+                    case 'guestAdd3':
+                        guestTeamScoreTemp +=3; 
+                        break;     
+               }
+            guestTeamScore.innerText =  guestTeamScoreTemp;
+        }
+
+        function newGame() {
+            homeTeamScoreTemp = 0;
+            guestTeamScoreTemp = 0;
+
+            guestTeamScore.innerText = 0;
+            homeTeamScore.innerText = 0;
+        }
+    </script>
+</body>
+</html>
