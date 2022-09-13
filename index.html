@@ -6,7 +6,7 @@
     <title>Basketball Scoreboard</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://allfont.ru/allfont.css?fonts=a_lcdnova" rel="stylesheet" type="text/css" />
+    <link href="https://allfont.ru/allfont.css?fonts=digital-7" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="wrapper">
@@ -48,49 +48,42 @@
         let guestScoreboardAddscore = document.querySelector('.guest-scoreboard-addscore');
 
         let homeTeamScore = document.querySelector('.home-scoreboard-score');
-        let homeTeamScoreTemp = 0;
 
         let guestTeamScore = document.querySelector('.guest-scoreboard-score');
-        let guestTeamScoreTemp = 0;
 
         homeScoreboardAddscore.onclick = function(event) {
                switch(event.target.id) {
                     case 'homeAdd1': 
-                        homeTeamScoreTemp +=1;
+                       homeTeamScore.innerText = Number(homeTeamScore.innerText) + 1;
                         break;
                          
                     case 'homeAdd2':
-                        homeTeamScoreTemp +=2; 
+                       homeTeamScore.innerText = Number(homeTeamScore.innerText) + 2;
                         break;
 
                     case 'homeAdd3':
-                        homeTeamScoreTemp +=3; 
+                      homeTeamScore.innerText = Number(homeTeamScore.innerText) + 3;
                         break;     
                }
-            homeTeamScore.innerText = homeTeamScoreTemp; 
         }
 
         guestScoreboardAddscore.onclick = function(event) {
             switch(event.target.id) {
                     case 'guestAdd1': 
-                        guestTeamScoreTemp +=1;
+                        guestTeamScore.innerText = Number(guestTeamScore.innerText) + 1;
                         break;
                          
                     case 'guestAdd2':
-                        guestTeamScoreTemp +=2; 
+                        guestTeamScore.innerText = Number(guestTeamScore.innerText) + 2; 
                         break;
 
                     case 'guestAdd3':
-                        guestTeamScoreTemp +=3; 
+                        guestTeamScore.innerText = Number(guestTeamScore.innerText) + 3;
                         break;     
                }
-            guestTeamScore.innerText =  guestTeamScoreTemp;
         }
 
         function newGame() {
-            homeTeamScoreTemp = 0;
-            guestTeamScoreTemp = 0;
-
             guestTeamScore.innerText = 0;
             homeTeamScore.innerText = 0;
         }
