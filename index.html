@@ -1,91 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Basketball Scoreboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <body>
     <div class="wrapper">
-            <div class="scoreboard">
-                <div class="home-scoreboard">
-                    <p class="home-scoreboard-title">HOME</p>
+      <div class="scoreboard">
+        <div class="home-scoreboard scoreboard-temp">
+          <p class="home-scoreboard-title">HOME</p>
 
-                    <div class="home-scoreboard-view">
-                        <p class="home-scoreboard-score">0</p>
-                    </div>
+          <div class="home-scoreboard-view">
+            <p class="home-scoreboard-score scoreboard-score-temp">0</p>
+          </div>
 
-                    <div class="home-scoreboard-addscore">
-                        <button class="button-addscore"  id="homeAdd1">+ 1</button>
-                        <button class="button-addscore"  id="homeAdd2">+ 2</button>
-                        <button class="button-addscore"  id="homeAdd3">+ 3</button>
-                    </div>
-                </div>
+          <div class="home-scoreboard-addscore scoreboard-event-temp">
+            <button class="button-addscore" id="homeAdd1" data-score="1">
+              + 1
+            </button>
 
-                <div class="guest-scoreboard">
-                    <p class="guest-scoreboard-title">GUEST</p>
+            <button class="button-addscore" id="homeAdd2" data-score="2">
+              + 2
+            </button>
 
-                    <div class="guest-scoreboard-view">
-                        <p class="guest-scoreboard-score">0</p>
-                    </div>
+            <button class="button-addscore" id="homeAdd3" data-score="3">
+              + 3
+            </button>
+          </div>
+        </div>
 
-                    <div class="guest-scoreboard-addscore">
-                        <button class="button-addscore"  id="guestAdd1">+ 1</button>
-                        <button class="button-addscore"  id="guestAdd2">+ 2</button>
-                        <button class="button-addscore"  id="guestAdd3">+ 3</button>
-                    </div>
-                </div>
-            </div>
+        <div class="guest-scoreboard scoreboard-temp">
+          <p class="guest-scoreboard-title">GUEST</p>
 
-            <button class="new-game" onclick="newGame()">New Game</button>
+          <div class="guest-scoreboard-view">
+            <p class="guest-scoreboard-score scoreboard-score-temp">0</p>
+          </div>
+
+          <div class="guest-scoreboard-addscore scoreboard-event-temp">
+            <button class="button-addscore" id="guestAdd1" data-score="1">
+              + 1
+            </button>
+
+            <button class="button-addscore" id="guestAdd2" data-score="2">
+              + 2
+            </button>
+
+            <button class="button-addscore" id="guestAdd3" data-score="3">
+              + 3
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="new-game">New Game</button>
     </div>
 
     <script>
-        let homeScoreboardAddscore = document.querySelector('.home-scoreboard-addscore');
-        let guestScoreboardAddscore = document.querySelector('.guest-scoreboard-addscore');
+      document
+      .querySelectorAll(".scoreboard-event-temp")
+      .forEach((element) => {
+        element.addEventListener("click", (event) => {
+          if (!event.target.dataset.score) return;
 
-        let homeTeamScore = document.querySelector('.home-scoreboard-score');
+          const scoreElement = event.target
+            .closest(".scoreboard-temp")
+            .querySelector(".scoreboard-score-temp");
+          const score = Number(event.target.dataset.score);
+          scoreElement.innerText = Number(scoreElement.innerText) + score;
+        });
+      });
 
-        let guestTeamScore = document.querySelector('.guest-scoreboard-score');
-
-        homeScoreboardAddscore.onclick = function(event) {
-               switch(event.target.id) {
-                    case 'homeAdd1': 
-                       homeTeamScore.innerText = Number(homeTeamScore.innerText) + 1;
-                        break;
-                         
-                    case 'homeAdd2':
-                       homeTeamScore.innerText = Number(homeTeamScore.innerText) + 2;
-                        break;
-
-                    case 'homeAdd3':
-                      homeTeamScore.innerText = Number(homeTeamScore.innerText) + 3;
-                        break;     
-               }
-        }
-
-        guestScoreboardAddscore.onclick = function(event) {
-            switch(event.target.id) {
-                    case 'guestAdd1': 
-                        guestTeamScore.innerText = Number(guestTeamScore.innerText) + 1;
-                        break;
-                         
-                    case 'guestAdd2':
-                        guestTeamScore.innerText = Number(guestTeamScore.innerText) + 2; 
-                        break;
-
-                    case 'guestAdd3':
-                        guestTeamScore.innerText = Number(guestTeamScore.innerText) + 3;
-                        break;     
-               }
-        }
-
-        function newGame() {
-            guestTeamScore.innerText = 0;
-            homeTeamScore.innerText = 0;
-        }
+      document
+        .querySelector(".new-game")
+        .addEventListener("click", function (event) {
+          document
+            .querySelectorAll(".scoreboard-score-temp")
+            .forEach((element) => {
+              element.innerText = 0;
+            });
+        });
     </script>
-</body>
+  </body>
 </html>
