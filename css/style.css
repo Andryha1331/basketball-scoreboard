@@ -63,7 +63,7 @@ html, body {
     width: 117px;
     height: 120px;
 
-    font-family: 'Digital-7', arial;
+    font-family: 'Digital', arial;
     font-style: normal;
     font-weight: 400;
     font-size: 90px;
@@ -89,7 +89,7 @@ html, body {
     border: 2px solid #9AABD8;
     border-radius: 5px;
 
-    font-family: 'Digital-7', arial;
+    font-family: 'Digital', arial;
     color: #9AABD8;
     background-color: #1B244A;
 }
@@ -121,4 +121,9 @@ html, body {
 @font-face {
     font-family: "Verdana";
     src: url(../fonts/Verdana/Verdana.ttf);
+}
+
+@font-face {
+    font-family: "Digital";
+    src: url(../fonts/Digital/digital.ttf);
 }
